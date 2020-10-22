@@ -9,6 +9,7 @@ import mapIcon from "../utils/mapIcon";
 import api from "../services/api";
 
 import '../styles/pages/orphanage.css';
+import { isConstructorDeclaration } from "typescript";
 
 interface Orphanage {
   latitude: number;
@@ -35,6 +36,7 @@ export default function Orphanage() {
 
   useEffect(() => {
     api.get(`orphanages/${params.id}`).then(response => {
+      console.log(response.data.url);
       setOrphanage(response.data);
     });
   }, [params.id]);
